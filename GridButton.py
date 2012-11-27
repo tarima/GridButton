@@ -9,6 +9,7 @@ from Tkinter import *
 import threading
 import random
 import tkMessageBox
+import time
 
 root = Tk()
 root.title('おもしろアプリ')
@@ -45,11 +46,14 @@ class ButtonFlash:
 	def buttonflash(self):
 		global RANDOMNUM
 		RANDOMNUM = random.randint(0,8)
-		BUTTONLIST[RANDOMNUM].flash()
+		#BUTTONLIST[RANDOMNUM].flash()
+		BUTTONLIST[RANDOMNUM].configure(bg = '#00FF00')
+		time.sleep(0.1)
+		BUTTONLIST[RANDOMNUM].configure(bg = '#00FFFF')
 		self.ButtonFlashTimer()
 
 	def ButtonFlashTimer(self):
-		t = threading.Timer(1, self.buttonflash)
+		t = threading.Timer(0.3, self.buttonflash)
 		t.start()
 
 ##------------------------------------------------
